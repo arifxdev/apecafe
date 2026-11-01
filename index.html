@@ -1,0 +1,2005 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ape Cafe Sydney | Waterfront Views & All-Day Brunch Sans Souci</title>
+    <meta name="description" content="Artisanal coffee, waterfront views, and all-day brunch at 301 The Grand Parade, Sans Souci, Sydney. Serving specialty brews from 4:00 AM daily." />
+    <meta property="og:title" content="Ape Cafe Sydney | Waterfront Views & All-Day Brunch" />
+    <meta property="og:description" content="Start your day right by the water at Sans Souci. Specialty coffee, Gaytime Signature Shakes, gourmet burgers, and fresh seaside brunch." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Playfair Display (Serif), Poppins (Sans), Caveat (Script Accent) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS via CDN with customized theme matching reference palette -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: {
+                50: '#FFFEFA',
+                100: '#FDFBF7',
+                200: '#F9F6F0', // Main warm background from reference
+                300: '#F2ECE1',
+                400: '#E7DEC9',
+                500: '#D5C7AB',
+              },
+              espresso: {
+                800: '#4A302A',
+                900: '#3E2723', // Dark contrast background from reference
+                950: '#2A1815',
+              },
+              caramel: {
+                400: '#F59E0B',
+                500: '#E07A2B',
+                600: '#D97706', // Primary CTA button & active states
+                700: '#B45309',
+                800: '#92400E',
+              },
+              sand: '#EFE7DA',
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'Georgia', 'serif'],
+              sans: ['"Poppins"', 'sans-serif'],
+              script: ['"Caveat"', 'cursive'],
+            },
+            boxShadow: {
+              'warm-sm': '0 2px 8px -1px rgba(62, 39, 35, 0.06)',
+              'warm-md': '0 12px 24px -4px rgba(62, 39, 35, 0.09)',
+              'warm-lg': '0 20px 35px -6px rgba(62, 39, 35, 0.12)',
+              'warm-xl': '0 25px 50px -12px rgba(62, 39, 35, 0.18)',
+              'caramel-glow': '0 10px 25px -3px rgba(217, 119, 6, 0.35)',
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- GSAP & ScrollTrigger for high-performance scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      body {
+        background-color: #F9F6F0;
+        color: #2D2421;
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+      }
+      .font-serif-display {
+        font-family: 'Playfair Display', Georgia, serif;
+      }
+      .font-script {
+        font-family: 'Caveat', cursive;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #F9F6F0;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #D5C7AB;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #D97706;
+      }
+      /* Torn paper edge SVG masks */
+      .torn-edge-top {
+        filter: drop-shadow(0 -4px 6px rgba(42, 24, 21, 0.08));
+      }
+      .torn-edge-bottom {
+        filter: drop-shadow(0 4px 6px rgba(42, 24, 21, 0.08));
+      }
+      /* Floating hero cards animation */
+      @keyframes softFloat {
+        0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+        50% { transform: translateY(-8px) rotate(var(--rot, 0deg)); }
+      }
+      .animate-float-1 {
+        --rot: -3.5deg;
+        animation: softFloat 6s ease-in-out infinite;
+      }
+      .animate-float-2 {
+        --rot: 0deg;
+        animation: softFloat 5.5s ease-in-out infinite 0.7s;
+      }
+      .animate-float-3 {
+        --rot: 3.5deg;
+        animation: softFloat 6.5s ease-in-out infinite 1.4s;
+      }
+
+      /* Critical: Ensure menu cards are always fully visible by default */
+      .menu-item-card {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+    </style>
+  </head>
+  <body class="bg-cream-200 text-[#2E201B] antialiased selection:bg-caramel-500 selection:text-white relative">
+    
+    <!-- Top Announcement Bar (Waterfront location & Dawn coffee) -->
+    <div class="bg-espresso-950 text-cream-200 text-xs py-2 px-4 text-center tracking-wide font-medium flex items-center justify-center gap-2 border-b border-white/5">
+      <span class="inline-block w-2 h-2 rounded-full bg-caramel-500 animate-ping mr-1"></span>
+      <span>Waterfront Specialty Brews from <strong class="text-caramel-400 font-semibold">4:00 AM Daily</strong> · 301 The Grand Parade, Sans Souci</span>
+      <span class="hidden md:inline text-cream-400">|</span>
+      <a href="tel:0431990273" class="hidden md:inline hover:text-caramel-400 transition-colors">Call 0431 990 273</a>
+    </div>
+
+    <!-- Navigation Bar (Top Bar Contract: Clean 3-zone header) -->
+    <header id="main-nav" class="sticky top-0 z-40 bg-cream-200/95 backdrop-blur-md border-b border-[#E8DEC8]/60 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        
+        <!-- Zone 1: Left Navigation Links (Desktop) -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-[#4A3B32]">
+          <a href="#home" class="nav-link hover:text-caramel-600 transition-colors uppercase tracking-wider text-xs font-semibold">Home</a>
+          <a href="#menu" class="nav-link hover:text-caramel-600 transition-colors uppercase tracking-wider text-xs font-semibold">Menu</a>
+          <a href="#story" class="nav-link hover:text-caramel-600 transition-colors uppercase tracking-wider text-xs font-semibold">Our Story</a>
+          <a href="#gallery" class="nav-link hover:text-caramel-600 transition-colors uppercase tracking-wider text-xs font-semibold">Gallery</a>
+          <a href="#location" class="nav-link hover:text-caramel-600 transition-colors uppercase tracking-wider text-xs font-semibold">Location</a>
+        </nav>
+
+        <!-- Zone 2: Centered Brand Wordmark & Emblem -->
+        <a href="#home" class="flex flex-col items-center justify-center text-center group cursor-pointer">
+          <div class="flex items-center gap-1.5">
+            <span class="font-script text-caramel-600 text-lg leading-none transform -rotate-6">The</span>
+            <span class="font-serif-display font-extrabold text-2xl sm:text-3xl text-espresso-900 tracking-tight leading-none group-hover:text-caramel-700 transition-colors">Ape Cafe</span>
+          </div>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-[#8C7A70] font-semibold mt-0.5">Sans Souci · Sydney</span>
+        </a>
+
+        <!-- Zone 3: Right Actions (Contact, Cart, Order Button) -->
+        <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+          <a href="#location" class="hidden sm:inline-block text-xs uppercase tracking-wider font-semibold text-[#4A3B32] hover:text-caramel-600 transition-colors">
+            Contact
+          </a>
+
+          <!-- Cart Trigger Button with live counter -->
+          <button id="cart-toggle-btn" class="relative p-2.5 rounded-full text-espresso-900 hover:bg-cream-300 transition-colors" aria-label="Open Cart">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span id="cart-badge-count" class="absolute -top-1 -right-1 bg-caramel-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm transform scale-0 transition-transform duration-200">0</span>
+          </button>
+
+          <!-- Caramel "Order Now" CTA -->
+          <button id="order-now-btn" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white font-medium text-xs tracking-wider uppercase shadow-caramel-glow hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+            <span>Order Now</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobile-menu-btn" class="lg:hidden p-2 text-espresso-900 hover:text-caramel-600 focus:outline-none" aria-label="Toggle Menu">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-cream-100 border-b border-[#E8DEC8] px-6 py-5 shadow-lg">
+        <div class="flex flex-col space-y-3.5 text-sm font-medium text-espresso-900">
+          <a href="#home" class="mobile-nav-link py-1 hover:text-caramel-600 border-b border-cream-300/60">Home</a>
+          <a href="#menu" class="mobile-nav-link py-1 hover:text-caramel-600 border-b border-cream-300/60">Menu & All-Day Brunch</a>
+          <a href="#story" class="mobile-nav-link py-1 hover:text-caramel-600 border-b border-cream-300/60">Our Story & Philosophy</a>
+          <a href="#gallery" class="mobile-nav-link py-1 hover:text-caramel-600 border-b border-cream-300/60">Waterfront Gallery</a>
+          <a href="#reviews" class="mobile-nav-link py-1 hover:text-caramel-600 border-b border-cream-300/60">What Regulars Say</a>
+          <a href="#location" class="mobile-nav-link py-1 hover:text-caramel-600">Hours & Directions</a>
+          <div class="pt-2 flex flex-col gap-2">
+            <button id="mobile-order-btn" class="w-full py-3 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white font-semibold text-xs uppercase tracking-wider shadow-md text-center flex items-center justify-center gap-2">
+              <span>Order Online Now</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION (Strict replication of reference layout with real photographic imagery) -->
+    <section id="home" class="relative pt-10 pb-20 md:pt-14 md:pb-28 overflow-hidden bg-cream-200">
+      
+      <!-- Subtle Botanical Line Art in Background -->
+      <div class="absolute inset-0 pointer-events-none opacity-15 overflow-hidden">
+        <svg class="absolute -left-16 top-10 w-96 h-96 text-[#6D4C41]" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M20,180 Q60,110 110,90 Q150,75 190,50" />
+          <path d="M50,140 Q40,110 65,115 C90,120 75,145 50,140 Z" />
+          <path d="M80,115 Q95,90 120,105 C145,120 115,135 80,115 Z" />
+          <path d="M125,85 Q110,55 135,60 C160,65 145,95 125,85 Z" />
+        </svg>
+        <svg class="absolute -right-20 top-24 w-[28rem] h-[28rem] text-[#6D4C41]" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M180,180 Q140,110 90,90 Q50,75 10,50" />
+          <path d="M150,140 Q160,110 135,115 C110,120 125,145 150,140 Z" />
+          <path d="M120,115 Q105,90 80,105 C55,120 85,135 120,115 Z" />
+        </svg>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-amber-900/10 pointer-events-none"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        
+        <!-- Kicker tag -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-300/80 border border-cream-400 text-espresso-800 text-xs font-medium tracking-wide mb-5 shadow-warm-sm">
+          <span class="w-2 h-2 rounded-full bg-caramel-600"></span>
+          <span>Sans Souci Waterfront · Est. 2018</span>
+        </div>
+
+        <!-- Main Headline (Serif high-contrast style matching reference) -->
+        <h1 class="font-serif-display text-4xl sm:text-6xl lg:text-7xl font-bold text-espresso-950 tracking-tight leading-[1.1] max-w-4xl mx-auto mb-5 text-balance">
+          Waterfront Views & <br class="hidden sm:inline" />
+          <span class="italic font-normal text-caramel-700">All-Day Brunch</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-base sm:text-lg text-[#5D4A41] max-w-2xl mx-auto leading-relaxed mb-10">
+          Start your day right by the water at Sans Souci. Artisanal specialty coffee, decadent signature shakes, and fresh seaside brunch served daily from 4:00 AM.
+        </p>
+
+        <!-- FLOATING 3-CARD SHOWCASE (Exact layout from reference hero with REAL PHOTOGRAPHY) -->
+        <div class="relative max-w-5xl mx-auto mt-6 mb-8 px-2">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center justify-center">
+            
+            <!-- Hero Card 1: Artisanal Flat White with Rosetta Latte Art (Real Photo) -->
+            <div class="animate-float-1 group relative bg-[#FFFDF9] p-3.5 pb-5 rounded-[2rem] border border-[#E9DFCF] shadow-warm-lg hover:shadow-warm-xl transition-all duration-300">
+              <div class="relative w-full h-60 sm:h-64 rounded-[1.5rem] overflow-hidden bg-[#EAE0D0]">
+                <img 
+                  src="./images/hero_latte.jpg" 
+                  alt="Velvet Flat White Latte Art in Ceramic Cup"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/hero_latte.jpg'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
+                <div class="absolute bottom-3 left-4 text-xs font-mono text-white/90 tracking-widest uppercase drop-shadow">Single Origin</div>
+                <div class="absolute top-3 right-4 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-[10px] font-bold text-espresso-900 shadow">4.9 ★</div>
+              </div>
+              <div class="pt-4 px-2 text-left flex items-center justify-between">
+                <div>
+                  <h3 class="font-serif-display font-bold text-base text-espresso-950">Velvet Flat White</h3>
+                  <p class="text-xs text-[#7A6B63]">House roasted blend · Creamy microfoam</p>
+                </div>
+                <button onclick="addToCart('Velvet Flat White', 4.80, 'Coffee', './images/hero_latte.jpg')" class="w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center transition-transform hover:scale-110 shadow-sm" title="Quick Add">
+                  <i data-lucide="plus" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Hero Card 2: Centerpiece - Gaytime Signature Shake (Real Photo) -->
+            <div class="animate-float-2 group relative bg-[#FFFDF9] p-3.5 pb-5 rounded-[2rem] border-2 border-caramel-500/50 shadow-warm-xl hover:shadow-2xl transition-all duration-300 md:-translate-y-3">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-caramel-600 text-white text-[10px] uppercase font-bold tracking-wider shadow-sm z-20">
+                Sydney Famous
+              </div>
+              <div class="relative w-full h-64 sm:h-72 rounded-[1.5rem] overflow-hidden bg-[#FAF2E6]">
+                <img 
+                  src="./images/hero_gaytime_shake.jpg" 
+                  alt="Decadent Gaytime Signature Shake with Whipped Cream and Honeycomb Crumble"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/hero_gaytime_shake.jpg'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/15"></div>
+                <div class="absolute bottom-3 inset-x-4 flex justify-between items-center text-[11px] font-semibold text-white drop-shadow">
+                  <span class="bg-black/40 backdrop-blur-sm px-2.5 py-0.5 rounded-full border border-white/20">Honeycomb & Toffee</span>
+                  <span class="text-caramel-400 font-bold font-mono text-sm">$11.50</span>
+                </div>
+              </div>
+              <div class="pt-4 px-2 text-left flex items-center justify-between">
+                <div>
+                  <h3 class="font-serif-display font-bold text-base text-espresso-950">Gaytime Signature Shake</h3>
+                  <p class="text-xs text-[#7A6B63]">Toffee crunch, malt cream, gold drizzle</p>
+                </div>
+                <button onclick="addToCart('Gaytime Signature Shake', 11.50, 'Shakes', './images/hero_gaytime_shake.jpg')" class="w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center transition-transform hover:scale-110 shadow-sm" title="Quick Add">
+                  <i data-lucide="plus" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Hero Card 3: Hot Cappuccino on Saucer (Real Photo) -->
+            <div class="animate-float-3 group relative bg-[#FFFDF9] p-3.5 pb-5 rounded-[2rem] border border-[#E9DFCF] shadow-warm-lg hover:shadow-warm-xl transition-all duration-300">
+              <div class="relative w-full h-60 sm:h-64 rounded-[1.5rem] overflow-hidden bg-[#EAE0D0]">
+                <img 
+                  src="./images/hero_cappuccino.jpg" 
+                  alt="Golden Cappuccino with Cocoa Dusting on Saucer"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/hero_cappuccino.jpg'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
+                <div class="absolute bottom-3 right-4 text-xs font-mono text-white/90 tracking-widest uppercase drop-shadow">Barista Pick</div>
+                <div class="absolute top-3 left-4 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-[10px] font-bold text-espresso-900 shadow">Belgian Cocoa</div>
+              </div>
+              <div class="pt-4 px-2 text-left flex items-center justify-between">
+                <div>
+                  <h3 class="font-serif-display font-bold text-base text-espresso-950">Golden Cappuccino</h3>
+                  <p class="text-xs text-[#7A6B63]">Velvety froth · Roasted cocoa powder</p>
+                </div>
+                <button onclick="addToCart('Golden Cappuccino', 5.50, 'Coffee', './images/hero_cappuccino.jpg')" class="w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center transition-transform hover:scale-110 shadow-sm" title="Quick Add">
+                  <i data-lucide="plus" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Quick Trust Metrics Strip below Hero -->
+        <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-[#6B5A51] font-medium pt-4">
+          <div class="flex items-center gap-2">
+            <i data-lucide="waves" class="w-4 h-4 text-caramel-600"></i>
+            <span>Georges River Waterfront Views</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="dog" class="w-4 h-4 text-caramel-600"></i>
+            <span>100% Dog Friendly Patio</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="sun" class="w-4 h-4 text-caramel-600"></i>
+            <span>Serving from 4:00 AM Daily</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-caramel-600"></i>
+            <span>Locally Sourced Australian Produce</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE MENU CATEGORY SLIDER / RIBBON (Straddling the transition) -->
+    <div id="menu-ribbon" class="relative z-30 -mb-7">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="bg-white/95 backdrop-blur-md p-2 rounded-full border border-[#DFD3C2] shadow-warm-lg flex items-center justify-start sm:justify-center overflow-x-auto gap-2 no-scrollbar scroll-smooth">
+          
+          <button onclick="filterCategory('all', this)" class="category-pill active-pill shrink-0 px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 bg-caramel-600 text-white shadow-caramel-glow">
+            All Favorites
+          </button>
+          
+          <button onclick="filterCategory('coffee', this)" class="category-pill shrink-0 px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 text-espresso-900 hover:bg-cream-200">
+            Espresso & Lattes
+          </button>
+          
+          <button onclick="filterCategory('shakes', this)" class="category-pill shrink-0 px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 text-espresso-900 hover:bg-cream-200">
+            Signature Shakes
+          </button>
+          
+          <button onclick="filterCategory('breakfast', this)" class="category-pill shrink-0 px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 text-espresso-900 hover:bg-cream-200">
+            All-Day Breakfast
+          </button>
+          
+          <button onclick="filterCategory('burgers', this)" class="category-pill shrink-0 px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 text-espresso-900 hover:bg-cream-200">
+            Waterfront Burgers
+          </button>
+          
+          <button onclick="filterCategory('cold', this)" class="category-pill shrink-0 px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 text-espresso-900 hover:bg-cream-200">
+            Cold Drinks & Acai
+          </button>
+          
+          <button onclick="filterCategory('bakery', this)" class="category-pill shrink-0 px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 text-espresso-900 hover:bg-cream-200">
+            Bakery & Treats
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- TORN PAPER DIVIDER (Cream to Deep Espresso) -->
+    <div class="relative w-full overflow-hidden leading-none z-20">
+      <svg class="torn-edge-top w-full h-12 sm:h-16 text-espresso-900 fill-current" preserveAspectRatio="none" viewBox="0 0 1440 64">
+        <path d="M0,32 Q60,18 120,38 T240,24 T360,42 T480,18 T600,34 T720,20 T840,40 T960,22 T1080,36 T1200,16 T1320,38 T1440,28 L1440,64 L0,64 Z"></path>
+      </svg>
+    </div>
+
+    <!-- DARK ESPRESSO CONTRAST SECTION (Replicating exact reference split with real photographic assets) -->
+    <section id="featured-split" class="relative bg-espresso-900 text-cream-100 pt-8 pb-16 lg:py-20 overflow-hidden">
+      
+      <!-- Subtle coffee beans background watermarks -->
+      <div class="absolute inset-0 pointer-events-none opacity-5">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <pattern id="beans-pattern" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M20 20 C20 10 35 10 35 20 C35 30 20 30 20 20 Z" fill="#FFF" />
+            <path d="M25 15 C27 20 28 25 25 25" stroke="#3E2723" stroke-width="2" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#beans-pattern)" />
+        </svg>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- LEFT COLUMN: The Splashing Coffee Cup & Product Highlight -->
+          <div class="lg:col-span-7 flex flex-col sm:flex-row items-center gap-8 lg:gap-10">
+            
+            <!-- Real Photographic Splash Cup Container with ambient glow & flying beans -->
+            <div id="splash-container" class="relative w-64 h-80 sm:w-72 sm:h-96 shrink-0 flex items-center justify-center">
+              
+              <!-- Ambient amber glow behind splash -->
+              <div class="absolute w-56 h-56 rounded-full bg-caramel-600/30 blur-3xl pointer-events-none"></div>
+
+              <!-- Real Photo Spotlight Display -->
+              <div class="relative w-52 h-72 sm:w-60 sm:h-80 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-espresso-950 p-2 flex flex-col justify-end">
+                <img 
+                  id="highlight-image" 
+                  src="./images/splash_cappuccino.jpg" 
+                  alt="Specialty Coffee Brew"
+                  class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/splash_cappuccino.jpg'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                
+                <!-- Floating Badge in image -->
+                <div class="relative z-10 p-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-center">
+                  <span class="text-[9px] uppercase tracking-widest text-caramel-300 font-bold block">Ape Cafe Sydney</span>
+                  <span id="highlight-card-tag" class="text-xs text-white font-semibold">Artisanal Barista Roast</span>
+                </div>
+              </div>
+
+              <!-- Decorative Floating Coffee Beans -->
+              <div class="absolute -top-3 right-4 w-7 h-5 bg-[#23120B] rounded-full border border-amber-900/60 transform rotate-45 flex items-center justify-center shadow-lg">
+                <div class="w-4 h-0.5 bg-[#422316] rounded-full"></div>
+              </div>
+              <div class="absolute bottom-6 -left-3 w-6 h-4 bg-[#2D160D] rounded-full border border-amber-900/60 transform -rotate-30 flex items-center justify-center shadow-lg">
+                <div class="w-3.5 h-0.5 bg-[#4A281A] rounded-full"></div>
+              </div>
+
+            </div>
+
+            <!-- Product Highlight Text & Action -->
+            <div class="text-left max-w-md">
+              <div class="inline-flex items-center gap-2 text-caramel-400 text-xs font-semibold uppercase tracking-wider mb-2">
+                <span id="highlight-badge">Barista Specialty</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-caramel-500"></span>
+                <span>Waterfront Roast</span>
+              </div>
+              
+              <h2 id="highlight-title" class="font-serif-display text-3xl sm:text-4xl font-bold text-[#FFFBF5] leading-tight mb-3">
+                Golden Cappuccino
+              </h2>
+
+              <p id="highlight-desc" class="text-cream-300/80 text-sm leading-relaxed mb-5">
+                Rich aroma, silky texture, timeless taste. A carefully crafted brew featuring premium single-origin espresso and creamy microfoam, delivering warmth and seaside comfort in every sip.
+              </p>
+
+              <!-- Price with large bold numeral -->
+              <div class="flex items-baseline gap-2 mb-6">
+                <span class="text-sm font-medium text-cream-400">AUD</span>
+                <span id="highlight-price" class="font-serif-display text-3xl sm:text-4xl font-bold text-caramel-400">$ 5.50</span>
+                <span id="highlight-size" class="text-xs text-cream-400/70 ml-1">· Regular 8oz</span>
+              </div>
+
+              <!-- Stylized Add to Cart button matching reference -->
+              <div class="flex items-center gap-3">
+                <button id="highlight-add-btn" onclick="addHighlightToCart()" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white font-semibold text-xs tracking-wider uppercase shadow-caramel-glow transition-all duration-200 transform hover:scale-105 active:scale-95">
+                  <span>Add to Cart</span>
+                  <i data-lucide="plus" class="w-4 h-4"></i>
+                </button>
+
+                <!-- Quick item swap buttons for instant preview -->
+                <div class="flex items-center gap-1.5 text-xs text-cream-400">
+                  <button onclick="switchHighlight('coffee')" id="btn-hl-coffee" class="px-2.5 py-1.5 rounded-lg bg-caramel-600 text-white font-medium transition-colors text-[11px]">Coffee</button>
+                  <button onclick="switchHighlight('shake')" id="btn-hl-shake" class="px-2.5 py-1.5 rounded-lg bg-espresso-800 hover:bg-caramel-700 hover:text-white transition-colors text-[11px]">Shake</button>
+                  <button onclick="switchHighlight('omelette')" id="btn-hl-omelette" class="px-2.5 py-1.5 rounded-lg bg-espresso-800 hover:bg-caramel-700 hover:text-white transition-colors text-[11px]">Omelette</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: "Coffee Cravings? We've Got You Covered" Feature Card -->
+          <div class="lg:col-span-5 bg-espresso-950/70 rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+            
+            <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-caramel-600/10 blur-2xl pointer-events-none"></div>
+
+            <div class="space-y-6">
+              <h3 class="font-serif-display text-2xl sm:text-3xl font-bold text-white leading-snug">
+                Coffee Cravings? <br />
+                <span class="italic text-caramel-400">We've Got You Covered</span>
+              </h3>
+
+              <p class="text-cream-300/80 text-sm leading-relaxed">
+                Order your favorite specialty drinks, hearty brunch burgers, and artisanal bakery treats for quick pickup or bay-side delivery along the Sans Souci waterfront. Fresh ingredients, careful packaging, and dependable craft—every single time.
+              </p>
+
+              <div>
+                <button onclick="openCartDrawer()" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white font-medium text-xs tracking-wider uppercase shadow-caramel-glow transition-all duration-300 transform hover:-translate-y-0.5">
+                  <span>Order Now</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+
+              <!-- 3 Icon Trust Strip matching reference bottom -->
+              <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-3 text-center sm:text-left">
+                <div class="space-y-1">
+                  <div class="flex items-center justify-center sm:justify-start text-caramel-400">
+                    <i data-lucide="coffee" class="w-4 h-4"></i>
+                  </div>
+                  <div class="text-[11px] font-semibold text-white">Freshly Prepared</div>
+                  <div class="text-[10px] text-cream-400/60 hidden sm:block">Ground per order</div>
+                </div>
+
+                <div class="space-y-1">
+                  <div class="flex items-center justify-center sm:justify-start text-caramel-400">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  </div>
+                  <div class="text-[11px] font-semibold text-white">Sans Souci Pickup</div>
+                  <div class="text-[10px] text-cream-400/60 hidden sm:block">Ready in 10-15m</div>
+                </div>
+
+                <div class="space-y-1">
+                  <div class="flex items-center justify-center sm:justify-start text-caramel-400">
+                    <i data-lucide="award" class="w-4 h-4"></i>
+                  </div>
+                  <div class="text-[11px] font-semibold text-white">Quality Guaranteed</div>
+                  <div class="text-[10px] text-cream-400/60 hidden sm:block">100% Arabica</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TORN PAPER DIVIDER (Deep Espresso back to Cream) -->
+    <div class="relative w-full overflow-hidden leading-none -mt-1 z-20">
+      <svg class="torn-edge-bottom w-full h-12 sm:h-16 text-espresso-900 fill-current rotate-180" preserveAspectRatio="none" viewBox="0 0 1440 64">
+        <path d="M0,32 Q60,18 120,38 T240,24 T360,42 T480,18 T600,34 T720,20 T840,40 T960,22 T1080,36 T1200,16 T1320,38 T1440,28 L1440,64 L0,64 Z"></path>
+      </svg>
+    </div>
+
+    <!-- CURATED MENU CARDS SECTION (Fully Visible, Guaranteed Image Rendering, No Opacity Hiding) -->
+    <section id="menu" class="py-16 sm:py-24 bg-cream-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="text-caramel-700 text-xs font-bold uppercase tracking-widest block mb-2">Artisanal Selection</span>
+          <h2 class="font-serif-display text-3xl sm:text-5xl font-bold text-espresso-950 tracking-tight mb-4">
+            Our Signature Creations
+          </h2>
+          <p class="text-sm sm:text-base text-[#68564D] leading-relaxed">
+            Every item is crafted with premium ingredients, passion for coastal flavours, and served fresh on the Sans Souci waterfront.
+          </p>
+        </div>
+
+        <!-- In-section Category Filter Quick-Bar -->
+        <div class="flex items-center justify-center flex-wrap gap-2 mb-12">
+          <button onclick="filterCategory('all', this)" class="category-pill active-pill px-4 py-2 rounded-full text-xs font-semibold bg-caramel-600 text-white shadow-caramel-glow transition-all">
+            All Creations
+          </button>
+          <button onclick="filterCategory('coffee', this)" class="category-pill px-4 py-2 rounded-full text-xs font-semibold text-espresso-900 bg-white/90 border border-[#E0D4C2] hover:bg-cream-300 transition-all">
+            Espresso & Lattes
+          </button>
+          <button onclick="filterCategory('shakes', this)" class="category-pill px-4 py-2 rounded-full text-xs font-semibold text-espresso-900 bg-white/90 border border-[#E0D4C2] hover:bg-cream-300 transition-all">
+            Signature Shakes
+          </button>
+          <button onclick="filterCategory('breakfast', this)" class="category-pill px-4 py-2 rounded-full text-xs font-semibold text-espresso-900 bg-white/90 border border-[#E0D4C2] hover:bg-cream-300 transition-all">
+            All-Day Breakfast
+          </button>
+          <button onclick="filterCategory('burgers', this)" class="category-pill px-4 py-2 rounded-full text-xs font-semibold text-espresso-900 bg-white/90 border border-[#E0D4C2] hover:bg-cream-300 transition-all">
+            Waterfront Burgers
+          </button>
+          <button onclick="filterCategory('cold', this)" class="category-pill px-4 py-2 rounded-full text-xs font-semibold text-espresso-900 bg-white/90 border border-[#E0D4C2] hover:bg-cream-300 transition-all">
+            Cold Drinks & Acai
+          </button>
+          <button onclick="filterCategory('bakery', this)" class="category-pill px-4 py-2 rounded-full text-xs font-semibold text-espresso-900 bg-white/90 border border-[#E0D4C2] hover:bg-cream-300 transition-all">
+            Bakery & Treats
+          </button>
+        </div>
+
+        <!-- MENU CARDS GRID (10 Items covering all categories with instant image rendering) -->
+        <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+          
+          <!-- Card 1: Gaytime Signature Shake -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="shakes">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• Signature Shakes</span>
+                <span class="font-mono text-espresso-900 font-bold">$11.50</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Gaytime Signature Shake
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                Salted caramel toffee crunch, malt cream, vanilla bean gelato, and honeycomb biscuits.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual with Centered Plus Button -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/menu_shake.jpg" 
+                  alt="Gaytime Signature Shake" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/menu_shake.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Gaytime Signature Shake', 11.50, 'Shakes', './images/menu_shake.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">Bestseller</span>
+              <button onclick="addToCart('Gaytime Signature Shake', 11.50, 'Shakes', './images/menu_shake.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 2: Signature Folded Omelette -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="breakfast">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• All-Day Breakfast</span>
+                <span class="font-mono text-espresso-900 font-bold">$19.00</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Signature Folded Omelette
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                Free-range eggs, whipped goat cheese, wild spinach, baby chives, and buttered toasted sourdough.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/menu_omelette.jpg" 
+                  alt="Signature Folded Omelette" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/menu_omelette.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Signature Folded Omelette', 19.00, 'Breakfast', './images/menu_omelette.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">Organic Produce</span>
+              <button onclick="addToCart('Signature Folded Omelette', 19.00, 'Breakfast', './images/menu_omelette.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 3: Velvet Flat White (Coffee Category) -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="coffee">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• Espresso & Lattes</span>
+                <span class="font-mono text-espresso-900 font-bold">$4.80</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Velvet Flat White
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                House roasted specialty blend with silky microfoam and notes of milk chocolate & hazelnut.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/hero_latte.jpg" 
+                  alt="Velvet Flat White" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/hero_latte.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Velvet Flat White', 4.80, 'Coffee', './images/hero_latte.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">Single Origin</span>
+              <button onclick="addToCart('Velvet Flat White', 4.80, 'Coffee', './images/hero_latte.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 4: Sans Souci Wagyu Burger -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="burgers">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• Waterfront Burgers</span>
+                <span class="font-mono text-espresso-900 font-bold">$18.50</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Sans Souci Wagyu Burger
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                180g grass-fed Wagyu beef, melted vintage cheddar, house relish, milk bun, rosemary fries.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/menu_burger.jpg" 
+                  alt="Sans Souci Wagyu Burger with Fries" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/menu_burger.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Sans Souci Wagyu Burger', 18.50, 'Burgers', './images/menu_burger.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">Includes Fries</span>
+              <button onclick="addToCart('Sans Souci Wagyu Burger', 18.50, 'Burgers', './images/menu_burger.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 5: Golden Cappuccino (Coffee Category) -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="coffee">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• Espresso & Lattes</span>
+                <span class="font-mono text-espresso-900 font-bold">$5.50</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Golden Cappuccino
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                Velvety froth, rich extraction, and a generous dusting of roasted Belgian cocoa powder.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/hero_cappuccino.jpg" 
+                  alt="Golden Cappuccino" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/hero_cappuccino.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Golden Cappuccino', 5.50, 'Coffee', './images/hero_cappuccino.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">Barista Pick</span>
+              <button onclick="addToCart('Golden Cappuccino', 5.50, 'Coffee', './images/hero_cappuccino.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 6: Mango Passion Smoothie -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="cold">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• Cold Drinks</span>
+                <span class="font-mono text-espresso-900 font-bold">$9.20</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Mango Passion Smoothie
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                Aussie Kensington Pride mango, passionfruit seeds, Greek yoghurt, coconut nectar, fresh mint.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/menu_smoothie.jpg" 
+                  alt="Mango Passionfruit Smoothie" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/menu_smoothie.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Mango Passion Smoothie', 9.20, 'Cold Drinks', './images/menu_smoothie.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">Dairy-free option</span>
+              <button onclick="addToCart('Mango Passion Smoothie', 9.20, 'Cold Drinks', './images/menu_smoothie.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 7: Chocolate Sea Salt Brownie -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="bakery">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• Bakery & Treats</span>
+                <span class="font-mono text-espresso-900 font-bold">$7.20</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Fudgy Chocolate Brownie
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                Belgian dark cocoa, Maldon sea salt flakes, warm caramel center, served warm.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/menu_brownie.jpg" 
+                  alt="Fudgy Chocolate Brownie" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/menu_brownie.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Fudgy Chocolate Brownie', 7.20, 'Bakery', './images/menu_brownie.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">Freshly Baked</span>
+              <button onclick="addToCart('Fudgy Chocolate Brownie', 7.20, 'Bakery', './images/menu_brownie.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 8: New York Cheesecake -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="bakery">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• Bakery & Treats</span>
+                <span class="font-mono text-espresso-900 font-bold">$8.50</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Baked Vanilla Cheesecake
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                Velvety Philadelphia cream cheese, buttery graham cracker crust, berry compote.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/menu_cheesecake.jpg" 
+                  alt="Baked Vanilla Cheesecake" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/menu_cheesecake.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Baked Vanilla Cheesecake', 8.50, 'Bakery', './images/menu_cheesecake.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">House Recipe</span>
+              <button onclick="addToCart('Baked Vanilla Cheesecake', 8.50, 'Bakery', './images/menu_cheesecake.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 9: Almond Flaked Croissant -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="bakery">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• Bakery & Treats</span>
+                <span class="font-mono text-espresso-900 font-bold">$6.00</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Almond Flaked Croissant
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                Layers of French butter pastry, frangipane almond cream, dusted icing sugar.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/menu_croissant.jpg" 
+                  alt="Almond Flaked Croissant" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/menu_croissant.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Almond Flaked Croissant', 6.00, 'Bakery', './images/menu_croissant.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">4 AM Dawn Bake</span>
+              <button onclick="addToCart('Almond Flaked Croissant', 6.00, 'Bakery', './images/menu_croissant.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Card 10: Acai Sunshine Bowl -->
+          <div class="menu-item-card bg-[#FFFDF9] rounded-3xl p-5 border border-[#E9DFCF] shadow-warm-md hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group" data-category="cold">
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#8C7A70] mb-2 font-medium">
+                <span class="uppercase tracking-wider text-[11px] font-semibold text-caramel-700">• Cold Drinks & Acai</span>
+                <span class="font-mono text-espresso-900 font-bold">$16.50</span>
+              </div>
+              <h3 class="font-serif-display font-bold text-lg text-espresso-950 group-hover:text-caramel-700 transition-colors">
+                Sans Souci Acai Bowl
+              </h3>
+              <p class="text-xs text-[#7A6B63] mt-1 line-clamp-2">
+                Pure Amazonian acai blend, crunchy maple granola, strawberries, blueberries, chia seeds.
+              </p>
+            </div>
+
+            <!-- Circular Product Visual -->
+            <div class="relative my-6 flex flex-col items-center">
+              <div class="w-36 h-36 rounded-full p-1.5 shadow-inner border-2 border-[#E5D7C3] bg-[#F4ECE1] overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="./images/menu_acai.jpg" 
+                  alt="Sans Souci Acai Bowl" 
+                  class="w-full h-full object-cover rounded-full block"
+                  loading="eager"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/menu_acai.jpg'"
+                />
+              </div>
+              <button onclick="addToCart('Sans Souci Acai Bowl', 16.50, 'Cold Drinks', './images/menu_acai.jpg')" class="absolute -bottom-3 w-8 h-8 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white flex items-center justify-center shadow-md transition-transform duration-200 hover:scale-110 active:scale-95" title="Add to Cart">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between text-xs">
+              <span class="text-[#8C7A70]">Vegan & GF</span>
+              <button onclick="addToCart('Sans Souci Acai Bowl', 16.50, 'Cold Drinks', './images/menu_acai.jpg')" class="text-caramel-700 font-semibold hover:underline">Add to Cart</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- View Full Menu Banner CTA -->
+        <div class="mt-12 text-center">
+          <button onclick="openCartDrawer()" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-espresso-900 hover:bg-espresso-950 text-white font-medium text-xs tracking-wider uppercase shadow-warm-lg hover:shadow-warm-xl transition-all duration-300">
+            <span>Open Order Bag (<span id="cart-btn-qty">0</span> Items)</span>
+            <i data-lucide="shopping-bag" class="w-4 h-4 text-caramel-400"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STORY & INFORMATIONAL SECTION ("More Than Just Coffee" with REAL WATERFRONT CAFE PHOTOGRAPHY) -->
+    <section id="story" class="py-20 lg:py-28 bg-[#F4ECE1] relative overflow-hidden border-y border-[#E5DAC8]">
+      
+      <div class="absolute -right-24 bottom-0 w-80 h-80 opacity-10 pointer-events-none">
+        <svg viewBox="0 0 200 200" fill="none" stroke="#3E2723" stroke-width="1.5">
+          <path d="M10,190 C60,140 120,120 180,30" />
+          <circle cx="90" cy="110" r="10" />
+          <circle cx="130" cy="70" r="8" />
+        </svg>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left Column: Atmosphere Real Photography & Features -->
+          <div class="lg:col-span-6 space-y-4">
+            
+            <div class="relative rounded-3xl overflow-hidden border-2 border-white/80 shadow-warm-xl bg-[#E6D9C8]">
+              <!-- Real Photo of Waterfront Cafe Atmosphere -->
+              <div class="relative h-80 sm:h-96 w-full">
+                <img 
+                  src="./images/story_waterfront.jpg" 
+                  alt="Ape Cafe Waterfront Terrace at Sans Souci" 
+                  class="w-full h-full object-cover block"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/story_waterfront.jpg'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-espresso-950/85 via-espresso-950/30 to-transparent"></div>
+                
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-xs font-semibold uppercase tracking-wider text-espresso-950 shadow-sm">
+                    Sans Souci Waterfront
+                  </span>
+                </div>
+
+                <div class="absolute bottom-6 inset-x-6 z-10 space-y-2 text-white">
+                  <div class="flex items-center gap-2 text-caramel-400">
+                    <i data-lucide="sun" class="w-5 h-5"></i>
+                    <span class="text-xs font-semibold tracking-wider uppercase">Dawn Patrol Favorite</span>
+                  </div>
+                  <h4 class="font-serif-display text-2xl sm:text-3xl font-bold leading-tight">
+                    Where the Georges River Meets Exceptional Coffee
+                  </h4>
+                  <p class="text-xs sm:text-sm text-cream-200/90 max-w-md">
+                    Whether you are an early morning swimmer, bay-side cyclist, or relaxing for a sunny weekend brunch with your pup.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Floating Real Dog Highlight Chip -->
+              <div class="absolute top-4 right-4 bg-cream-100/95 backdrop-blur-md p-1.5 pr-4 rounded-2xl border border-cream-300 shadow-md flex items-center gap-2.5 z-20">
+                <img 
+                  src="./images/story_dog.jpg" 
+                  alt="Dog Friendly Cafe" 
+                  class="w-10 h-10 rounded-xl object-cover"
+                  referrerpolicy="no-referrer"
+                  onerror="this.src='/images/story_dog.jpg'"
+                />
+                <div>
+                  <div class="text-[11px] font-bold text-espresso-950">Dog Friendly</div>
+                  <div class="text-[9px] text-caramel-700 font-semibold">Free Puppuccinos!</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Mini features bar -->
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div class="p-4 rounded-2xl bg-[#FFFDF9] border border-[#E3D6C4] shadow-sm">
+                <div class="font-serif-display font-bold text-xl text-caramel-700">4:00 AM</div>
+                <div class="text-[11px] text-[#73635B] mt-0.5">First Roast Poured</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-[#FFFDF9] border border-[#E3D6C4] shadow-sm">
+                <div class="font-serif-display font-bold text-xl text-caramel-700">100%</div>
+                <div class="text-[11px] text-[#73635B] mt-0.5">Outdoor Seating</div>
+              </div>
+              <div class="p-4 rounded-2xl bg-[#FFFDF9] border border-[#E3D6C4] shadow-sm">
+                <div class="font-serif-display font-bold text-xl text-caramel-700">Waterfront</div>
+                <div class="text-[11px] text-[#73635B] mt-0.5">Panoramic View</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Editorial Story Prose -->
+          <div class="lg:col-span-6 space-y-6">
+            
+            <div class="inline-flex items-center gap-2 text-caramel-700 text-xs font-bold uppercase tracking-widest">
+              <span>Our Philosophy</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-caramel-600"></span>
+              <span>Since 2018</span>
+            </div>
+
+            <h2 class="font-serif-display text-3xl sm:text-5xl font-bold text-espresso-950 tracking-tight leading-tight">
+              More Than <br />
+              <span class="italic text-caramel-700">Just Coffee</span>
+            </h2>
+
+            <p class="text-sm sm:text-base text-[#5D4A41] leading-relaxed">
+              Nestled along the scenic waterfront of <strong>301 The Grand Parade in Sans Souci</strong>, Ape Cafe was born out of a desire to create a sanctuary where Sydneysiders can pause, breathe in the salt air, and savor meticulously crafted coffee.
+            </p>
+
+            <p class="text-sm sm:text-base text-[#5D4A41] leading-relaxed">
+              We wake up with the dawn at <strong>4:00 AM every single morning</strong> so early bird rowers, cyclists, runners, and tradespeople never have to compromise on quality coffee. From our famous Gaytime Signature Shakes to our organic folded omelettes, every dish celebrates honest, vibrant Australian cafe culture.
+            </p>
+
+            <!-- Key Points -->
+            <div class="space-y-3 pt-2">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-caramel-600/10 text-caramel-700 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                </div>
+                <div class="text-xs sm:text-sm text-[#4E3E36]">
+                  <strong class="text-espresso-950">Ethically Sourced Beans:</strong> Carefully selected Arabica micro-lots roasted locally for balanced chocolate, toffee, and berry notes.
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-caramel-600/10 text-caramel-700 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                </div>
+                <div class="text-xs sm:text-sm text-[#4E3E36]">
+                  <strong class="text-espresso-950">Pet-Friendly Gathering:</strong> Bring your four-legged best friends! Fresh water bowls and house-made puppuccinos are always ready.
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-caramel-600/10 text-caramel-700 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                </div>
+                <div class="text-xs sm:text-sm text-[#4E3E36]">
+                  <strong class="text-espresso-950">Waterfront Verandah:</strong> Take in expansive water views across Botany Bay and the Georges River while you dine.
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 flex flex-wrap items-center gap-4">
+              <a href="#location" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-espresso-900 hover:bg-espresso-950 text-white font-medium text-xs tracking-wider uppercase transition-colors shadow-warm-md">
+                <span>Find Us & Parking</span>
+                <i data-lucide="navigation" class="w-3.5 h-3.5 text-caramel-400"></i>
+              </a>
+
+              <a href="https://www.instagram.com/apecafesyd/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-cream-100 text-espresso-900 border border-[#DACFBF] font-medium text-xs tracking-wider uppercase transition-colors">
+                <i data-lucide="instagram" class="w-3.5 h-3.5 text-caramel-600"></i>
+                <span>Follow @apecafesyd</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF / TESTIMONIALS SECTION ("What Our Regulars Say" with REAL PORTRAITS) -->
+    <section id="reviews" class="py-20 lg:py-28 bg-cream-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-caramel-700 text-xs font-bold uppercase tracking-widest block mb-2">Community Love</span>
+          <h2 class="font-serif-display text-3xl sm:text-5xl font-bold text-espresso-950 tracking-tight mb-4">
+            What Our Regulars Say
+          </h2>
+          <p class="text-sm text-[#6C5B52]">
+            From early morning runners to weekend brunch crews, here is why Sans Souci chooses Ape Cafe.
+          </p>
+        </div>
+
+        <!-- Reviews Grid with Real Customer Portraits -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          
+          <!-- Review 1: Sarah M. -->
+          <div class="bg-[#FFFDF9] rounded-3xl p-6 sm:p-7 border border-[#E8DEC8] shadow-warm-md hover:shadow-warm-lg transition-all duration-300 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center text-amber-500 gap-1">
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              </div>
+              <p class="text-sm text-[#4D3F38] italic leading-relaxed">
+                "The 4:00 AM opening is an absolute lifesaver for early morning bay walks and cycling. The flat white is consistently smooth, and the Gaytime Shake is simply legendary."
+              </p>
+            </div>
+            <div class="pt-6 border-t border-[#F0E6D6] flex items-center gap-3.5">
+              <img 
+                src="./images/testimonial_sarah.jpg" 
+                alt="Sarah M." 
+                class="w-12 h-12 rounded-full object-cover border-2 border-caramel-500/30 block"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.src='/images/testimonial_sarah.jpg'"
+              />
+              <div>
+                <div class="text-xs font-bold text-espresso-950">Sarah M.</div>
+                <div class="text-[10px] text-[#8C7A70]">Sans Souci Local · Regular since 2019</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2: David & Cooper -->
+          <div class="bg-[#FFFDF9] rounded-3xl p-6 sm:p-7 border border-[#E8DEC8] shadow-warm-md hover:shadow-warm-lg transition-all duration-300 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center text-amber-500 gap-1">
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              </div>
+              <p class="text-sm text-[#4D3F38] italic leading-relaxed">
+                "Waterfront view across Georges River is stunning. The staff immediately know our order, and our golden retriever gets treated like royalty with free puppuccinos every Sunday."
+              </p>
+            </div>
+            <div class="pt-6 border-t border-[#F0E6D6] flex items-center gap-3.5">
+              <img 
+                src="./images/testimonial_david.jpg" 
+                alt="David K." 
+                class="w-12 h-12 rounded-full object-cover border-2 border-caramel-500/30 block"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.src='/images/testimonial_david.jpg'"
+              />
+              <div>
+                <div class="text-xs font-bold text-espresso-950">David & Cooper 🐾</div>
+                <div class="text-[10px] text-[#8C7A70]">Weekend Regulars</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3: Elena Rodriguez -->
+          <div class="bg-[#FFFDF9] rounded-3xl p-6 sm:p-7 border border-[#E8DEC8] shadow-warm-md hover:shadow-warm-lg transition-all duration-300 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center text-amber-500 gap-1">
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              </div>
+              <p class="text-sm text-[#4D3F38] italic leading-relaxed">
+                "The Signature Folded Omelette and the Wagyu Burger are top-tier cafe dining. Great vibes, warm hospitality, and the best waterfront brunch spot in South Sydney!"
+              </p>
+            </div>
+            <div class="pt-6 border-t border-[#F0E6D6] flex items-center gap-3.5">
+              <img 
+                src="./images/testimonial_elena.jpg" 
+                alt="Elena Rodriguez" 
+                class="w-12 h-12 rounded-full object-cover border-2 border-caramel-500/30 block"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.src='/images/testimonial_elena.jpg'"
+              />
+              <div>
+                <div class="text-xs font-bold text-espresso-950">Elena Rodriguez</div>
+                <div class="text-[10px] text-[#8C7A70]">Sydney Foodie Reviewer</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- INSTAGRAM SOCIAL SHOWCASE @apecafesyd (Real Instagram Photography Grid) -->
+        <div id="gallery" class="mt-16 pt-12 border-t border-[#E5DAC8]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <div>
+              <span class="text-caramel-700 text-xs font-bold uppercase tracking-widest block">Live On Instagram</span>
+              <h3 class="font-serif-display text-2xl sm:text-3xl font-bold text-espresso-950">
+                Moments by the Bay @apecafesyd
+              </h3>
+            </div>
+            <a href="https://www.instagram.com/apecafesyd/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-caramel-700 hover:text-caramel-800 transition-colors">
+              <span>View Instagram Feed</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <!-- 4 Instagram Real Photo Cards with Links -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            
+            <a href="https://www.instagram.com/apecafesyd/" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden aspect-square bg-[#E0D2C0] shadow-sm hover:shadow-lg transition-all duration-300">
+              <img 
+                src="./images/insta_1.jpg" 
+                alt="Morning Flat White at Ape Cafe Sydney" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 block"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.src='/images/insta_1.jpg'"
+              />
+              <div class="absolute inset-0 bg-espresso-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-white text-center">
+                <i data-lucide="instagram" class="w-6 h-6 text-caramel-400 mb-1"></i>
+                <span class="text-xs font-semibold">Morning Flat Whites</span>
+                <span class="text-[10px] text-cream-300">#apecafesyd</span>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com/apecafesyd/" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden aspect-square bg-[#E0D2C0] shadow-sm hover:shadow-lg transition-all duration-300">
+              <img 
+                src="./images/insta_2.jpg" 
+                alt="Signature Gaytime Shakes" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 block"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.src='/images/insta_2.jpg'"
+              />
+              <div class="absolute inset-0 bg-espresso-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-white text-center">
+                <i data-lucide="instagram" class="w-6 h-6 text-caramel-400 mb-1"></i>
+                <span class="text-xs font-semibold">Gaytime Shakes</span>
+                <span class="text-[10px] text-cream-300">#sanssoucieats</span>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com/apecafesyd/" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden aspect-square bg-[#E0D2C0] shadow-sm hover:shadow-lg transition-all duration-300">
+              <img 
+                src="./images/insta_3.jpg" 
+                alt="Waterfront Brunch on the Deck" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 block"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.src='/images/insta_3.jpg'"
+              />
+              <div class="absolute inset-0 bg-espresso-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-white text-center">
+                <i data-lucide="instagram" class="w-6 h-6 text-caramel-400 mb-1"></i>
+                <span class="text-xs font-semibold">Brunch On The Deck</span>
+                <span class="text-[10px] text-cream-300">#sydneybrunch</span>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com/apecafesyd/" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden aspect-square bg-[#E0D2C0] shadow-sm hover:shadow-lg transition-all duration-300">
+              <img 
+                src="./images/insta_4.jpg" 
+                alt="Fresh Espresso Roasting" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 block"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.src='/images/insta_4.jpg'"
+              />
+              <div class="absolute inset-0 bg-espresso-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-white text-center">
+                <i data-lucide="instagram" class="w-6 h-6 text-caramel-400 mb-1"></i>
+                <span class="text-xs font-semibold">Specialty Extraction</span>
+                <span class="text-[10px] text-cream-300">#sydneycoffee</span>
+              </div>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LOCATION & OPENING HOURS SECTION -->
+    <section id="location" class="py-16 sm:py-20 bg-[#F2ECE1] border-t border-[#DFD4C2]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-[#FFFDF9] rounded-3xl p-8 sm:p-12 border border-[#E3D6C4] shadow-warm-lg">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-7 space-y-5">
+              <div class="inline-flex items-center gap-2 text-caramel-700 text-xs font-bold uppercase tracking-widest">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                <span>Waterfront Destination</span>
+              </div>
+
+              <h2 class="font-serif-display text-3xl sm:text-4xl font-bold text-espresso-950">
+                Visit Us by the Bay
+              </h2>
+
+              <p class="text-sm text-[#5C4B42] leading-relaxed">
+                Located right across from the sparkling waters of Botany Bay and the Georges River promenade in Sans Souci. Plenty of street parking and bike racks available.
+              </p>
+
+              <!-- Business Info Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 rounded-2xl bg-cream-100 border border-cream-300/80">
+                  <div class="flex items-center gap-2 text-xs font-bold text-espresso-900 uppercase tracking-wider mb-1">
+                    <i data-lucide="clock" class="w-4 h-4 text-caramel-600"></i>
+                    <span>Opening Hours</span>
+                  </div>
+                  <div class="text-xs text-[#524138] space-y-1">
+                    <div><strong class="text-espresso-950">Monday – Friday:</strong> 4:00 AM – 2:00 PM</div>
+                    <div><strong class="text-espresso-950">Saturday – Sunday:</strong> 4:00 AM – 3:00 PM</div>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-cream-100 border border-cream-300/80">
+                  <div class="flex items-center gap-2 text-xs font-bold text-espresso-900 uppercase tracking-wider mb-1">
+                    <i data-lucide="phone-call" class="w-4 h-4 text-caramel-600"></i>
+                    <span>Direct Contact</span>
+                  </div>
+                  <div class="text-xs text-[#524138] space-y-1">
+                    <div>Phone: <a href="tel:0431990273" class="font-semibold text-caramel-700 hover:underline">0431 990 273</a></div>
+                    <div>Email: <span class="text-espresso-950">hello@apecafe.com.au</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address & Navigation Button -->
+              <div class="pt-2 flex flex-wrap items-center gap-4">
+                <div class="text-xs text-[#4A3B32]">
+                  <strong>Address:</strong> 301 The Grand Parade, Sans Souci, NSW 2219, Australia
+                </div>
+                <a href="https://maps.google.com/?q=301+The+Grand+Parade,+Sans+Souci+NSW+2219" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-caramel-600 hover:bg-caramel-700 text-white font-medium text-xs tracking-wider uppercase shadow-sm transition-colors">
+                  <span>Get Directions</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+
+            </div>
+
+            <!-- Stylized Location Card Preview with Real Waterfront Photography -->
+            <div class="lg:col-span-5 h-72 sm:h-80 rounded-2xl overflow-hidden relative border border-[#D5C6B1] shadow-inner flex flex-col justify-between p-6">
+              <img 
+                src="./images/story_waterfront.jpg" 
+                alt="Sans Souci Waterfront Map Location" 
+                class="absolute inset-0 w-full h-full object-cover block"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.src='/images/story_waterfront.jpg'"
+              />
+              <div class="absolute inset-0 bg-espresso-950/60"></div>
+              
+              <div class="relative z-10 flex items-center justify-between">
+                <div class="px-3 py-1 rounded-full bg-espresso-900 text-cream-200 text-xs font-semibold shadow">
+                  Sans Souci NSW 2219
+                </div>
+                <div class="w-8 h-8 rounded-full bg-white shadow flex items-center justify-center text-caramel-600">
+                  <i data-lucide="compass" class="w-4 h-4"></i>
+                </div>
+              </div>
+
+              <div class="relative z-10 bg-white/95 backdrop-blur-sm p-4 rounded-xl border border-cream-300 shadow-md">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-caramel-600 text-white flex items-center justify-center font-bold">
+                    <i data-lucide="coffee" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-serif-display font-bold text-sm text-espresso-950">Ape Cafe Sydney</h4>
+                    <p class="text-[11px] text-[#78675E]">Waterfront terrace on The Grand Parade</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER (Clean footer containing all specified business info) -->
+    <footer class="bg-espresso-950 text-cream-200 pt-16 pb-12 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+          
+          <!-- Column 1: Brand & Bio -->
+          <div class="lg:col-span-4 space-y-4">
+            <div class="flex items-center gap-1.5">
+              <span class="font-script text-caramel-400 text-xl leading-none transform -rotate-6">The</span>
+              <span class="font-serif-display font-bold text-2xl text-white tracking-tight">Ape Cafe</span>
+            </div>
+            <p class="text-xs text-cream-400/80 leading-relaxed max-w-sm">
+              Artisanal specialty coffee, handcrafted breakfast, and seaside hospitality. Serving early birds, locals, and canine companions along the Sans Souci waterfront since 2018.
+            </p>
+            <!-- Social Icons -->
+            <div class="flex items-center gap-3 pt-2">
+              <a href="https://www.instagram.com/apecafesyd/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-caramel-600 text-white flex items-center justify-center transition-colors" title="Instagram">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+              </a>
+              <a href="https://maps.google.com/?q=301+The+Grand+Parade,+Sans+Souci+NSW+2219" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-caramel-600 text-white flex items-center justify-center transition-colors" title="Google Maps">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </a>
+              <a href="tel:0431990273" class="w-9 h-9 rounded-full bg-white/10 hover:bg-caramel-600 text-white flex items-center justify-center transition-colors" title="Call Us">
+                <i data-lucide="phone" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2: Hours -->
+          <div class="lg:col-span-3 space-y-3">
+            <h4 class="font-serif-display font-semibold text-white text-sm uppercase tracking-wider">Trading Hours</h4>
+            <div class="text-xs text-cream-300/80 space-y-2">
+              <div>
+                <span class="block text-white font-medium">Monday – Friday:</span>
+                <span>4:00 AM – 2:00 PM</span>
+              </div>
+              <div>
+                <span class="block text-white font-medium">Saturday – Sunday:</span>
+                <span>4:00 AM – 3:00 PM</span>
+              </div>
+              <div class="text-[11px] text-caramel-400 pt-1 font-semibold">
+                Open every public holiday from 4:00 AM
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Quick Navigation -->
+          <div class="lg:col-span-2 space-y-3">
+            <h4 class="font-serif-display font-semibold text-white text-sm uppercase tracking-wider">Explore</h4>
+            <ul class="text-xs text-cream-300/80 space-y-2">
+              <li><a href="#home" class="hover:text-caramel-400 transition-colors">Home</a></li>
+              <li><a href="#menu" class="hover:text-caramel-400 transition-colors">Specialty Menu</a></li>
+              <li><a href="#story" class="hover:text-caramel-400 transition-colors">Our Story</a></li>
+              <li><a href="#reviews" class="hover:text-caramel-400 transition-colors">Reviews</a></li>
+              <li><a href="#location" class="hover:text-caramel-400 transition-colors">Location & Parking</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Address & Contact Details -->
+          <div class="lg:col-span-3 space-y-3">
+            <h4 class="font-serif-display font-semibold text-white text-sm uppercase tracking-wider">Ape Cafe Sydney</h4>
+            <div class="text-xs text-cream-300/80 space-y-2">
+              <p>
+                301 The Grand Parade,<br />
+                Sans Souci, NSW 2219, Australia
+              </p>
+              <p>
+                Phone: <a href="tel:0431990273" class="text-caramel-400 font-semibold hover:underline">0431 990 273</a>
+              </p>
+              <p>
+                Instagram: <a href="https://www.instagram.com/apecafesyd/" target="_blank" rel="noopener noreferrer" class="text-caramel-400 hover:underline">@apecafesyd</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Copyright -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream-400/60 gap-4">
+          <div>
+            &copy; <span id="current-year">2026</span> Ape Cafe Sans Souci Sydney. All rights reserved.
+          </div>
+          <div class="flex items-center gap-6">
+            <span>Waterfront Views & All-Day Brunch</span>
+            <a href="#home" class="hover:text-caramel-400 transition-colors flex items-center gap-1">
+              <span>Back to Top</span>
+              <i data-lucide="chevron-up" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- INTERACTIVE SLIDE-OVER CART DRAWER -->
+    <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-[#FFFDF9] z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col border-l border-[#E5DAC8]">
+      
+      <!-- Drawer Header -->
+      <div class="p-6 bg-cream-200 border-b border-[#E5DAC8] flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-caramel-600"></i>
+          <h3 class="font-serif-display font-bold text-lg text-espresso-950">Your Order</h3>
+          <span id="drawer-item-count" class="text-xs bg-caramel-600/10 text-caramel-800 font-semibold px-2 py-0.5 rounded-full">0 items</span>
+        </div>
+        <button onclick="closeCartDrawer()" class="p-2 rounded-full text-[#6D5A50] hover:bg-cream-300 transition-colors" aria-label="Close Cart">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Items List (Scrollable) -->
+      <div id="cart-items-list" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <!-- Empty State -->
+        <div id="cart-empty-state" class="py-16 text-center space-y-3">
+          <div class="w-16 h-16 rounded-full bg-cream-300 text-espresso-800 flex items-center justify-center mx-auto">
+            <i data-lucide="coffee" class="w-8 h-8 text-caramel-600"></i>
+          </div>
+          <h4 class="font-serif-display font-bold text-base text-espresso-950">Your order is empty</h4>
+          <p class="text-xs text-[#8C7A70] max-w-xs mx-auto">
+            Explore our specialty menu above and add your favorite coffee, signature shakes, or brunch items!
+          </p>
+          <button onclick="closeCartDrawer()" class="mt-2 inline-flex px-4 py-2 rounded-full bg-caramel-600 text-white text-xs font-semibold uppercase tracking-wider">
+            Explore Menu
+          </button>
+        </div>
+      </div>
+
+      <!-- Drawer Footer with Subtotal & Checkout -->
+      <div id="cart-footer" class="p-6 bg-cream-100 border-t border-[#E5DAC8] space-y-4">
+        <div>
+          <label for="order-notes" class="block text-[11px] font-semibold text-espresso-900 uppercase tracking-wider mb-1">Kitchen / Barista Notes</label>
+          <input type="text" id="order-notes" placeholder="e.g. Oat milk, extra hot, dressing on side..." class="w-full text-xs px-3 py-2 rounded-xl border border-cream-400 bg-white focus:outline-none focus:border-caramel-600" />
+        </div>
+
+        <div class="space-y-1.5 text-xs text-[#5D4C44] pt-1">
+          <div class="flex justify-between">
+            <span>Pickup Location</span>
+            <span class="font-medium text-espresso-900">Sans Souci Waterfront</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Estimated Prep Time</span>
+            <span class="font-medium text-emerald-700">10 – 15 mins</span>
+          </div>
+          <div class="flex justify-between text-base font-bold text-espresso-950 pt-2 border-t border-[#E0D4C2]">
+            <span>Total AUD</span>
+            <span id="cart-total-price" class="font-serif-display text-caramel-700 text-lg">$0.00</span>
+          </div>
+        </div>
+
+        <button onclick="processCheckout()" id="checkout-btn" class="w-full py-3.5 rounded-full bg-caramel-600 hover:bg-caramel-700 disabled:bg-gray-300 text-white font-semibold text-xs tracking-wider uppercase shadow-caramel-glow transition-all duration-200 flex items-center justify-center gap-2">
+          <span>Place Pickup Order</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ORDER CONFIRMATION MODAL -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+      <div class="bg-[#FFFDF9] rounded-3xl max-w-md w-full p-8 border border-[#E5DAC8] shadow-2xl text-center space-y-5 animate-scale-up">
+        <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+          <i data-lucide="check-circle-2" class="w-9 h-9"></i>
+        </div>
+        <div>
+          <span class="text-caramel-700 text-xs font-bold uppercase tracking-wider">Order Received</span>
+          <h3 class="font-serif-display text-2xl font-bold text-espresso-950 mt-1">Thank You!</h3>
+          <p class="text-xs text-[#6B5A51] mt-2">
+            Your order has been sent to our barista and kitchen at Ape Cafe Sans Souci.
+          </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-cream-200 border border-cream-300 text-left space-y-2 text-xs">
+          <div class="flex justify-between">
+            <span class="text-[#7A6B63]">Order Reference:</span>
+            <span id="order-ref-num" class="font-mono font-bold text-espresso-950">#APE-8492</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-[#7A6B63]">Estimated Ready Time:</span>
+            <span class="font-bold text-caramel-700">In 12 minutes</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-[#7A6B63]">Pickup Address:</span>
+            <span class="font-medium text-espresso-950">301 The Grand Parade</span>
+          </div>
+        </div>
+        <button onclick="closeCheckoutModal()" class="w-full py-3 rounded-full bg-espresso-900 text-white font-semibold text-xs uppercase tracking-wider hover:bg-espresso-950 transition-colors">
+          Got It, See You Soon!
+        </button>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION POPUP -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-espresso-950 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none border border-white/10">
+      <div class="w-7 h-7 rounded-full bg-caramel-600 text-white flex items-center justify-center shrink-0">
+        <i data-lucide="check" class="w-4 h-4"></i>
+      </div>
+      <div>
+        <div id="toast-title" class="text-xs font-bold text-white">Added to Order</div>
+        <div id="toast-message" class="text-[11px] text-cream-300">Item successfully added</div>
+      </div>
+    </div>
+
+    <!-- VANILLA JAVASCRIPT FOR DYNAMIC FUNCTIONALITY -->
+    <script>
+      // Shopping Cart State
+      let cart = [];
+
+      // Highlight Item Variants with Real Photography
+      const highlightItems = {
+        coffee: {
+          title: "Golden Cappuccino",
+          tag: "Artisanal Barista Roast",
+          badge: "Barista Specialty",
+          desc: "Rich aroma, silky texture, timeless taste. A carefully crafted brew featuring premium single-origin espresso and creamy microfoam, delivering warmth and comfort in every sip.",
+          price: 5.50,
+          size: "· Regular 8oz",
+          categoryName: "Coffee",
+          image: "./images/splash_cappuccino.jpg"
+        },
+        shake: {
+          title: "Gaytime Signature Shake",
+          tag: "Sydney Famous Recipe",
+          badge: "Dessert Masterpiece",
+          desc: "Decadent salted caramel toffee crunch, golden honeycomb crumble, malt cream, and vanilla bean gelato in a chilled artisan glass jar.",
+          price: 11.50,
+          size: "· Artisan Glass",
+          categoryName: "Shakes",
+          image: "./images/menu_shake.jpg"
+        },
+        omelette: {
+          title: "Signature Folded Omelette",
+          tag: "Farm Fresh Free-Range",
+          badge: "All-Day Brunch",
+          desc: "Fluffy free-range eggs folded with creamy goat cheese, baby spinach, fresh chives, accompanied by thick cut toasted sourdough.",
+          price: 19.00,
+          size: "· Chef Made",
+          categoryName: "Breakfast",
+          image: "./images/menu_omelette.jpg"
+        }
+      };
+
+      let currentHighlightKey = 'coffee';
+
+      function switchHighlight(key) {
+        if (!highlightItems[key]) return;
+        currentHighlightKey = key;
+        const item = highlightItems[key];
+        
+        const titleEl = document.getElementById('highlight-title');
+        const descEl = document.getElementById('highlight-desc');
+        const priceEl = document.getElementById('highlight-price');
+        const sizeEl = document.getElementById('highlight-size');
+        const badgeEl = document.getElementById('highlight-badge');
+        const cardTagEl = document.getElementById('highlight-card-tag');
+        const imgEl = document.getElementById('highlight-image');
+
+        // Toggle button active classes
+        ['coffee', 'shake', 'omelette'].forEach(k => {
+          const btn = document.getElementById(`btn-hl-${k}`);
+          if (btn) {
+            if (k === key) {
+              btn.className = "px-2.5 py-1.5 rounded-lg bg-caramel-600 text-white font-medium transition-colors text-[11px]";
+            } else {
+              btn.className = "px-2.5 py-1.5 rounded-lg bg-espresso-800 hover:bg-caramel-700 hover:text-white transition-colors text-[11px]";
+            }
+          }
+        });
+
+        if (titleEl) titleEl.textContent = item.title;
+        if (descEl) descEl.textContent = item.desc;
+        if (priceEl) priceEl.textContent = `$ ${item.price.toFixed(2)}`;
+        if (sizeEl) sizeEl.textContent = item.size;
+        if (badgeEl) badgeEl.textContent = item.badge;
+        if (cardTagEl) cardTagEl.textContent = item.tag;
+        if (imgEl) imgEl.src = item.image;
+      }
+
+      function addHighlightToCart() {
+        const item = highlightItems[currentHighlightKey];
+        addToCart(item.title, item.price, item.categoryName, item.image);
+      }
+
+      // Add Item to Cart
+      function addToCart(title, price, category, image = './images/hero_latte.jpg') {
+        const existing = cart.find(i => i.title === title);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ title, price, category, image, qty: 1 });
+        }
+        updateCartUI();
+        showToast(`Added to Order`, `${title} ($${price.toFixed(2)})`);
+
+        // Bounce cart badge animation
+        const badge = document.getElementById('cart-badge-count');
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(badge, { scale: 1.4 }, { scale: 1, duration: 0.3, ease: 'back.out(2)' });
+        }
+      }
+
+      function updateQty(title, delta) {
+        const item = cart.find(i => i.title === title);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) {
+          cart = cart.filter(i => i.title !== title);
+        }
+        updateCartUI();
+      }
+
+      function updateCartUI() {
+        const badge = document.getElementById('cart-badge-count');
+        const btnQty = document.getElementById('cart-btn-qty');
+        const drawerCount = document.getElementById('drawer-item-count');
+        const itemsList = document.getElementById('cart-items-list');
+        const totalPriceEl = document.getElementById('cart-total-price');
+        const checkoutBtn = document.getElementById('checkout-btn');
+
+        const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
+        const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+        if (badge) badge.textContent = totalItems;
+        if (btnQty) btnQty.textContent = totalItems;
+        if (drawerCount) drawerCount.textContent = `${totalItems} items`;
+
+        if (badge) {
+          if (totalItems > 0) {
+            badge.classList.remove('scale-0');
+            badge.classList.add('scale-100');
+          } else {
+            badge.classList.add('scale-0');
+            badge.classList.remove('scale-100');
+          }
+        }
+
+        if (checkoutBtn) {
+          if (totalItems > 0) {
+            checkoutBtn.removeAttribute('disabled');
+          } else {
+            checkoutBtn.setAttribute('disabled', 'true');
+          }
+        }
+
+        if (totalPriceEl) totalPriceEl.textContent = `$${subtotal.toFixed(2)}`;
+
+        // Render Cart Items
+        if (itemsList) {
+          if (cart.length === 0) {
+            itemsList.innerHTML = `
+              <div id="cart-empty-state" class="py-16 text-center space-y-3">
+                <div class="w-16 h-16 rounded-full bg-cream-300 text-espresso-800 flex items-center justify-center mx-auto">
+                  <i data-lucide="coffee" class="w-8 h-8 text-caramel-600"></i>
+                </div>
+                <h4 class="font-serif-display font-bold text-base text-espresso-950">Your order is empty</h4>
+                <p class="text-xs text-[#8C7A70] max-w-xs mx-auto">
+                  Explore our specialty menu above and add your favorite coffee, signature shakes, or brunch items!
+                </p>
+              </div>
+            `;
+          } else {
+            let html = '';
+            cart.forEach(item => {
+              const itemTotal = (item.price * item.qty).toFixed(2);
+              html += `
+                <div class="bg-cream-100 p-3.5 rounded-2xl border border-cream-300/80 flex items-center justify-between gap-3">
+                  <img 
+                    src="${item.image}" 
+                    alt="${item.title}" 
+                    class="w-12 h-12 rounded-xl object-cover border border-cream-400 shrink-0" 
+                    referrerpolicy="no-referrer"
+                    onerror="this.src='/images/hero_latte.jpg'"
+                  />
+                  <div class="flex-1 min-w-0">
+                    <div class="text-[10px] font-semibold text-caramel-700 uppercase tracking-wider truncate">${item.category}</div>
+                    <h4 class="font-serif-display font-bold text-sm text-espresso-950 truncate">${item.title}</h4>
+                    <div class="text-xs text-[#7A6B63] font-mono mt-0.5">$${item.price.toFixed(2)} each</div>
+                  </div>
+                  
+                  <div class="flex items-center gap-2 shrink-0">
+                    <div class="flex items-center border border-cream-400 rounded-full bg-white px-2 py-0.5 shadow-sm">
+                      <button onclick="updateQty('${item.title}', -1)" class="w-5 h-5 flex items-center justify-center text-espresso-900 hover:text-caramel-600 font-bold text-sm leading-none">-</button>
+                      <span class="w-5 text-center text-xs font-bold font-mono text-espresso-950">${item.qty}</span>
+                      <button onclick="updateQty('${item.title}', 1)" class="w-5 h-5 flex items-center justify-center text-espresso-900 hover:text-caramel-600 font-bold text-sm leading-none">+</button>
+                    </div>
+                    <div class="text-xs font-bold font-mono text-espresso-950 w-12 text-right">
+                      $${itemTotal}
+                    </div>
+                  </div>
+                </div>
+              `;
+            });
+            itemsList.innerHTML = html;
+          }
+        }
+
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }
+
+      function openCartDrawer() {
+        const drawer = document.getElementById('cart-drawer');
+        const overlay = document.getElementById('cart-drawer-overlay');
+        if (overlay) {
+          overlay.classList.remove('opacity-0', 'pointer-events-none');
+          overlay.classList.add('opacity-100', 'pointer-events-auto');
+        }
+        if (drawer) {
+          drawer.classList.remove('translate-x-full');
+        }
+      }
+
+      function closeCartDrawer() {
+        const drawer = document.getElementById('cart-drawer');
+        const overlay = document.getElementById('cart-drawer-overlay');
+        if (overlay) {
+          overlay.classList.add('opacity-0', 'pointer-events-none');
+          overlay.classList.remove('opacity-100', 'pointer-events-auto');
+        }
+        if (drawer) {
+          drawer.classList.add('translate-x-full');
+        }
+      }
+
+      function processCheckout() {
+        if (cart.length === 0) return;
+        closeCartDrawer();
+        const modal = document.getElementById('checkout-modal');
+        const refNum = document.getElementById('order-ref-num');
+        const randomRef = `#APE-${Math.floor(1000 + Math.random() * 9000)}`;
+        if (refNum) refNum.textContent = randomRef;
+        if (modal) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        }
+        
+        cart = [];
+        updateCartUI();
+      }
+
+      function closeCheckoutModal() {
+        const modal = document.getElementById('checkout-modal');
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      }
+
+      let toastTimeout;
+      function showToast(title, msg) {
+        const toast = document.getElementById('toast');
+        const titleEl = document.getElementById('toast-title');
+        const msgEl = document.getElementById('toast-message');
+
+        if (titleEl) titleEl.textContent = title;
+        if (msgEl) msgEl.textContent = msg;
+
+        if (toast) {
+          clearTimeout(toastTimeout);
+          toast.classList.remove('translate-y-24', 'opacity-0');
+          toast.classList.add('translate-y-0', 'opacity-100');
+
+          toastTimeout = setTimeout(() => {
+            toast.classList.add('translate-y-24', 'opacity-0');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+          }, 3200);
+        }
+      }
+
+      // Robust Category Filter - Guaranteed to show matching cards
+      function filterCategory(cat, btn) {
+        document.querySelectorAll('.category-pill').forEach(p => {
+          p.classList.remove('active-pill', 'bg-caramel-600', 'text-white', 'shadow-caramel-glow');
+          p.classList.add('text-espresso-900');
+        });
+        
+        // Highlight clicked buttons
+        if (btn) {
+          btn.classList.add('active-pill', 'bg-caramel-600', 'text-white', 'shadow-caramel-glow');
+          btn.classList.remove('text-espresso-900');
+        }
+
+        const cards = document.querySelectorAll('.menu-item-card');
+        cards.forEach(card => {
+          const itemCat = card.getAttribute('data-category');
+          if (cat === 'all' || itemCat === cat) {
+            card.style.display = 'flex';
+            card.style.opacity = '1';
+            card.style.visibility = 'visible';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+
+        const yearEl = document.getElementById('current-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // Ensure all menu cards are 100% visible immediately
+        document.querySelectorAll('.menu-item-card').forEach(c => {
+          c.style.display = 'flex';
+          c.style.opacity = '1';
+          c.style.visibility = 'visible';
+        });
+
+        const cartToggle = document.getElementById('cart-toggle-btn');
+        if (cartToggle) cartToggle.addEventListener('click', openCartDrawer);
+
+        const orderNowBtn = document.getElementById('order-now-btn');
+        if (orderNowBtn) orderNowBtn.addEventListener('click', openCartDrawer);
+
+        const overlay = document.getElementById('cart-drawer-overlay');
+        if (overlay) overlay.addEventListener('click', closeCartDrawer);
+
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOrder = document.getElementById('mobile-order-btn');
+
+        if (mobileBtn && mobileMenu) {
+          mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+
+        if (mobileOrder) {
+          mobileOrder.addEventListener('click', () => {
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+            openCartDrawer();
+          });
+        }
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+          });
+        });
+
+        // Non-destructive GSAP effects (never setting opacity: 0 on content)
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+
+          ScrollTrigger.create({
+            start: 'top -50',
+            end: 99999,
+            toggleClass: { className: 'shadow-warm-md', targets: '#main-nav' }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Ape Cafe Sydney",
+  "description": "Artisanal coffee, waterfront views, and all-day brunch at Sans Souci, Sydney.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
